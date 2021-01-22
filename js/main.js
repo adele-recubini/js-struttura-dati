@@ -171,20 +171,31 @@ console.log(filterByPower(2,cards));
 // 2 funzione che dato un elemento del html ci stampa gli elementi di un array , cioe una restituzione grafica nel dom,
 // vogliamo in questo caso inserire le nostre card nel html come lista
 // cosa ci serve : function(elementohtml, array )
+
 function rendering(elementHTML, array) {
-  const cardList= document.getElementbyid(elementHTML)
+  const cardList= document.getElementById(elementHTML)
 
   array.forEach((element) => {
-  cardList.innerHTML+=`
-
-  <div>${element.cardName}</div>
-
-  `
+  cardList.innerHTML+= ` ${element.cardName},`
 });
-return cardlist
 }
 
 
+// richiamimao la funzione come argomento gli mettero il mio id come stringa cheho creato nell html
+rendering('cards-container' ,cards);
+
+
+// 3 funzione che mi inserisca nel search dell option dei valori di un array che poi saranno quelli collegati alle cards
+// la funzione è praticamente simile a quella che mi inserisce dei valori nell html (vedi rendering)
+
+function renderingValue(elementHTML, array) {
+  const valueList= document.getElementById(elementHTML)
+
+  array.forEach((element) => {
+  valueList.innerHTML+= ` <option>${element}</option>`
+});
+}
+ renderingValue('selector' , powerValue)
 
 
 // fine del document ready

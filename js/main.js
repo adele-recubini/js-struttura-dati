@@ -198,5 +198,15 @@ function renderingValue(elementHTML, array) {
  renderingValue('selector' , powerValue)
 
 
+
+// OUTPUT UTENTE
+// l utente sceglierà qualcosa dal dom e a quella scelta verrà associato una parte della lista cards, attivazione funzione change
+// in ascolto sulla select con id selector cioè l utente clica li quindi cambierà la scelta dei valori da li
+$("#selector").change(function(){
+ const selectValue = $(this).val()
+})
+
+
+
 // fine del document ready
 });

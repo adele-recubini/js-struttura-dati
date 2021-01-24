@@ -166,6 +166,13 @@ function filterByPower(powerValue, array) {
   })
 
 }
+// questa invece la funzione che me le filtra per tipo
+function filterByType(typeValue, array) {
+
+   return array.filter((element) =>{
+    return element.cardType === typeValue;
+  })
+}
 // console.log(filterByPower(2,cards));
 
 // 2 funzione che dato un elemento del html ci stampa gli elementi di un array , cioe una restituzione grafica nel dom,
@@ -177,9 +184,10 @@ function rendering(elementHTML, array) {
   cardList.innerHTML = ''; // svuota cioe ogni volta la lista di carte
 
   array.forEach((element) => {
-  cardList.innerHTML+= ` ${element.cardName},`
+  cardList.innerHTML+= ` Carta:${element.cardName};`
 });
 }
+
 
 
 // richiamimao la funzione come argomento gli mettero il mio id come stringa cheho creato nell html
@@ -196,7 +204,8 @@ function renderingValue(elementHTML, array) {
   valueList.innerHTML+= ` <option>${element}</option>`
 });
 }
- renderingValue('selector' , powerValues)
+renderingValue('selector' , powerValues)
+renderingValue('select' , cardTypes)
 
 
 
@@ -213,9 +222,22 @@ $("#selector").change(function(){
  rendering('cards-container',arrayFiltrato);
  // in cards container quindi nel dom visualizzerò ad ogni scelta del valore da 1 a 5 l array filtrato per quei valori
 
+// BONUS CREARE UN ALTRA SELECT CHE filtra PER CARdTYPE
+// prima dobbiamo inserire l array del ipo delle crte  nelle opzioni e abbiamo una funzione che possiamo riutilizzare
+// NB la funzione la richiamimao sopra perche in questo momento siamo all interno di un change e quindi non funziona
+})
+$("#select").change(function(){
+  const selectType = $(this).val()
 
+  const arrayFiltratoType = filterByType(selectType, cards )
 
+  rendering('cards-container', arrayFiltratoType);
+})
 
+// per l evento del reset ho creato un bottone quindi non sara una funzione di change ma di click ! e la funzione che mi mostrava tutte le carte per nome gia l avevo creata quindi la richiamo 
+
+$("#button-reset").click(function() {
+ rendering('cards-container',cards)
 })
 
 

@@ -13,14 +13,32 @@
 <!-- contenitore di tutta la pagina  -->
 
   <!-- all interno metto una label con un search e le sue opzioni -->
-<div id="search">
-  <label for="">search</label>
 
-  <select id ="selector" name="">
+  <!-- FILTRO IN BASE AL POTERE -->
+<div id="search">
+  <label for="select-power">filtra carte in base al potere-power</label>
+  <select id ="selector" name="select-power">
     <option value="">scegli</option>
   </select>
-  
 </div>
+
+
+<!-- FILTRO IN BASE AL TYPE  -->
+<div id="search">
+
+  <label for="select-type">filtra carte in base al type</label>
+  <select id ="select" name="select-type">
+    <option value="">scegli</option>
+  </select>
+</div>
+
+<!-- creo un bottone per il reset cioe se lo schiaccio mi fa vedere tutte le carte  -->
+
+<div>
+  <input type="button" id="button-reset" name="bottone di reset" value="">bottne di reset 
+</div>
+
+
 
 
 <div id="cards-container"></div>

@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
 
-const powerValue = [1,2,3,4,5]
+const powerValues = [1,2,3,4,5]
 
 
 const fieldCodes = [
@@ -147,7 +147,7 @@ const cards = [{
       story: 'la vita è una pacchia .',
 
       score: {
-        power: 0,  // r
+        power: 1,  // r
         toughness: 3
       }
 
@@ -166,7 +166,7 @@ function filterByPower(powerValue, array) {
   })
 
 }
-console.log(filterByPower(2,cards));
+// console.log(filterByPower(2,cards));
 
 // 2 funzione che dato un elemento del html ci stampa gli elementi di un array , cioe una restituzione grafica nel dom,
 // vogliamo in questo caso inserire le nostre card nel html come lista
@@ -174,6 +174,7 @@ console.log(filterByPower(2,cards));
 
 function rendering(elementHTML, array) {
   const cardList= document.getElementById(elementHTML)
+  cardList.innerHTML = ''; // svuota cioe ogni volta la lista di carte
 
   array.forEach((element) => {
   cardList.innerHTML+= ` ${element.cardName},`
@@ -195,7 +196,7 @@ function renderingValue(elementHTML, array) {
   valueList.innerHTML+= ` <option>${element}</option>`
 });
 }
- renderingValue('selector' , powerValue)
+ renderingValue('selector' , powerValues)
 
 
 
@@ -203,7 +204,18 @@ function renderingValue(elementHTML, array) {
 // l utente sceglierà qualcosa dal dom e a quella scelta verrà associato una parte della lista cards, attivazione funzione change
 // in ascolto sulla select con id selector cioè l utente clica li quindi cambierà la scelta dei valori da li
 $("#selector").change(function(){
- const selectValue = $(this).val()
+ const selectValue = parseInt($(this).val())
+ // creiamo un array a cui diamo la funzione di filtraggio per valore cioe filterByPower a cui dimao come primo argomento dei valori ... quelli che seleziono io quando clicco su opzioni quindi select value  e lcome secondo agomento l array totale
+
+ const arrayFiltrato = filterByPower(selectValue, cards);
+
+ // ho l array filtrato in base ai valori che seleziono nelle option ma ora vorrei che comparisse nel dom, utilizzo la funzione rendering. dove come primo argomento mettero una sezione del dom e come secondo argomento l array filtrato appena creato
+ rendering('cards-container',arrayFiltrato);
+ // in cards container quindi nel dom visualizzerò ad ogni scelta del valore da 1 a 5 l array filtrato per quei valori
+
+
+
+
 })
 
 

@@ -206,7 +206,7 @@ console.log(array);
 });
 }
 renderingValue('selector' , powerValues)
-// renderingValue('select' , cardTypes)
+renderingValue('select' , cardTypes)
 
 
 

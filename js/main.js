@@ -199,13 +199,14 @@ rendering('cards-container' ,cards);
 
 function renderingValue(elementHTML, array) {
   const valueList= document.getElementById(elementHTML)
-
+console.log(array);
   array.forEach((element) => {
+
   valueList.innerHTML+= ` <option>${element}</option>`
 });
 }
 renderingValue('selector' , powerValues)
-renderingValue('select' , cardTypes)
+// renderingValue('select' , cardTypes)
 
 
 
@@ -234,7 +235,7 @@ $("#select").change(function(){
   rendering('cards-container', arrayFiltratoType);
 })
 
-// per l evento del reset ho creato un bottone quindi non sara una funzione di change ma di click ! e la funzione che mi mostrava tutte le carte per nome gia l avevo creata quindi la richiamo 
+// per l evento del reset ho creato un bottone quindi non sara una funzione di change ma di click ! e la funzione che mi mostrava tutte le carte per nome gia l avevo creata quindi la richiamo
 
 $("#button-reset").click(function() {
  rendering('cards-container',cards)
